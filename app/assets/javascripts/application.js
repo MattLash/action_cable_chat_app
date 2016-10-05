@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require_tree .
 
-alert('Hello foo!')
+// alert('Hello foo!')
