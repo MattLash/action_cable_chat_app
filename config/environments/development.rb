@@ -53,6 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   #action cable for cloud environment
-  config.action_cable.allowed_request_origins = [ 'https://action-cable-mattl22.c9users.io/messages']
+  # config.action_cable.allowed_request_origins = [ 'https://action-cable-mattl22.c9users.io/messages']
   config.action_cable.allowed_request_origins = [ 'https://action-cable-mattl22.c9users.io' ]
 end
