@@ -10,5 +10,18 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     
     # alert data.content
     unless data.content.blank?
+      submit_message(data)
       $('#messages-table').append '<div class="message">' + '<div class="message-user">' + data.username + ":" + '</div>' +
           '<div class="message-content">' + data.content + '</div>' + '</div>'
+
+$(document).on 'turbolinks:load', ->
+  submit_message()
+
+submit_message = () ->
+  $('#message_content').on 'keydown', (event) ->
+    if event.keyCode is 13
+      console.log("enter key was pressed. We watchin' you!")
+      $('input').click()
+      event.target.value = ""
+      event.preventDefault()
+      
