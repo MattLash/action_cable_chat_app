@@ -17,9 +17,17 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     #   $('#messages-table').append data.message
     #   scroll_bottom()
     
-    unless data.message.blank?
+    # unless data.message.blank?
+    #   $('#messages-table').append data.message
+    #   scroll_bottom()
+    
+    alert("You have a new mention") if data.mention
+    if (data.message && !data.message.blank?)
       $('#messages-table').append data.message
       scroll_bottom()
+    
+    
+    
     
 $(document).on 'turbolinks:load', ->
   submit_message()
@@ -27,7 +35,7 @@ $(document).on 'turbolinks:load', ->
 
 submit_message = () ->
   $('#message_content').on 'keydown', (event) ->
-    if event.keyCode is 13
+    if event.keyCode is 13 && !event.shiftKey
       console.log("enter key was pressed. We watchin' you!")
       $('input').click()
       clear_input()
